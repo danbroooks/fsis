@@ -15,4 +15,10 @@ class FunctorSpec extends FreeSpec with Matchers {
       implicitly[Functor[Option]].map(Some(3))(_ + 10) should be(Some(13))
     }
   }
+
+  "function1Functor" - {
+    "provides map for unary functions" in {
+      implicitly[Functor[Int => ?]].map(_ + 1)(_ + 3)(5) should be(9)
+    }
+  }
 }
